@@ -1,0 +1,11 @@
+# frontend/Containerfile
+FROM registry.access.redhat.com/ubi10/nginx-126:10.0
+
+# Copy your HTML/JS files
+COPY . /opt/app-root/src/
+
+# Copy your custom Nginx config
+COPY nginx.conf /etc/nginx/nginx.conf
+
+EXPOSE 8081
+CMD ["nginx", "-g", "daemon off;"]

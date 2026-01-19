@@ -1,0 +1,10 @@
+# Secrets (the most important part!)
+.env
+
+# Go binaries (we build these in the container, no need to upload)
+guestbook-api
+backend/guestbook-api
+
+# System files
+.DS_Store
+Thumbs.db
