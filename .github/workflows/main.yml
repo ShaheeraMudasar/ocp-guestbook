@@ -41,8 +41,9 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build Backend Image
-        run: podman save -o backend.tar guestbook-backend:latest ./backend
-        
+        run: podman build -t guestbook-backend:latest ./backend
+             podman save -o backend.tar guestbook-backend:latest ./backend
+             
 
       - name: Scan Backend Image (Trivy)
         uses: aquasecurity/trivy-action@master
@@ -54,7 +55,8 @@ jobs:
           severity: 'CRITICAL,HIGH'
 
       - name: Build Frontend Image
-        run: podman save -o frontend.tar guestbook-frontend:latest ./frontend
+        run: podman build -t guestbook-frontend:latest ./frontend
+             podman save -o frontend.tar guestbook-frontend:latest ./frontend
 
       - name: Scan Backend Image (Trivy)
         uses: aquasecurity/trivy-action@master
