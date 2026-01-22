@@ -46,6 +46,7 @@ jobs:
       - name: Scan Backend Image (Trivy)
         uses: aquasecurity/trivy-action@master
         with:
+          input: 'backend.tar'
           image-ref: 'guestbook-backend:latest'
           format: 'table'
           exit-code: '1' # Fails the build if vulnerabilities are found
@@ -57,6 +58,7 @@ jobs:
       - name: Scan Backend Image (Trivy)
         uses: aquasecurity/trivy-action@master
         with:
+          input: 'frontend.tar'
           image-ref: 'guestbook-frontend:latest'
           format: 'table'
           exit-code: '1' 
