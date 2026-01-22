@@ -69,4 +69,17 @@ jobs:
           exit-code: '0' 
           severity: 'CRITICAL,HIGH'
 
+      - name: Log in to Quay.io
+        run: podman login -u ${{ secrets.QUAY_USERNAME }} -p ${{ secrets.QUAY_PASSWORD }} quay.io
+
+      - name: Push Images to Quay
+        run: |
+          # Tag and push Backend
+          podman tag guestbook-backend:latest quay.io/shaheeramudasar/guestbook-backend:latest
+          podman push quay.io/YOUR_QUAY_USER/guestbook-backend:latest
+          
+          # Tag and push Frontend
+          podman tag guestbook-frontend:latest quay.io/shaheeramudasar/guestbook-frontend:latest
+          podman push quay.io/YOUR_QUAY_USER/guestbook-frontend:latest
+
       
