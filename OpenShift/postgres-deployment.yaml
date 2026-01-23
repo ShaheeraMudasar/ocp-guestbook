@@ -19,13 +19,13 @@ spec:
         ports:
         - containerPort: 5432
         env:
-        - name: DB_HOST
-          value: "localhost"
-        - name: DB_USER
+        # - name: DB_HOST
+        #   value: "localhost"
+        - name: POSTGRES_USER 
           value: "guestbook"
-        - name: DB_PASSWORD
+        - name: POSTGRES_PASSWORD
           value: "password"
-        - name: DB_NAME
+        - name: POSTGRES_DB
           value: "guestbook"
         volumeMounts:
         - name: pgdata
