@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: guestbook-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: guestbook
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: guestbook
+        tier: backend
+    spec:
+      containers:
+      - name: guestbook-backend
+        image: quay.io/shaheeramudasar/guestbook-backend:latest
+        ports:
+        - containerPort: 5000
+    env:
+      - name: DB_HOST
+        value: "postgres" # Using postgres service name so that it can find that service
+      - name: DB_USER
+        value: "guestbook"
+      - name: DB_PASSWORD
+        value: "password"
+      - name: DB_NAME
+        value: "guestbook"
+      - name: REDIS_HOST
+        value: "redis"    # Matches the Service name above
+      - name: REDIS_PORT
+        value: "6379"
+      - name: REDIS_PASSWORD
+        value: ""         

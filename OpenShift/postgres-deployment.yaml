@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      tier: database # Unique identifier
+  template:
+    metadata:
+      labels:
+        app: guestbook
+        tier: database # Unique identifier
+    spec:
+      containers:
+      - name: postgres
+        image: quay.io/fedora/postgresql-16:latest
+        ports:
+        - containerPort: 5432
+        env:
+        - name: DB_HOST
+          value: "localhost"
+        - name: DB_USER
+          value: "guestbook"
+        - name: DB_PASSWORD
+          value: "password"
+        - name: DB_NAME
+          value: "guestbook"
+        volumeMounts:
+        - name: pgdata
+          mountPath: /var/lib/pgsql/data
+      volumes:
+      - name: pgdata
+        persistentVolumeClaim:
+          claimName: pgdata-claim
