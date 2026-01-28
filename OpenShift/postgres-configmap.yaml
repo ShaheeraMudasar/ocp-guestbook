@@ -3,6 +3,6 @@ kind: ConfigMap
 metadata:
   name: postgres-config
 data:
-  POSTGRES_USER: guestbookuser
-  POSTGRES_DATABASE: guestbookdatabase
-  POSTGRES_PORT: "5432"
+  POSTGRESQL_USER: guestbookuser
+  POSTGRESQL_DATABASE: guestbookdatabase
+  POSTGRESQL_PORT: "5432"

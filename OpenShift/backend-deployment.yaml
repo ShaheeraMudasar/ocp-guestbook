@@ -26,22 +26,22 @@ spec:
           valueFrom:
             configMapKeyRef:
               name: postgres-config
-              key: POSTGRES_USER
+              key: POSTGRESQL_USER
         - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
               name: postgres-password
-              key: POSTGRES_PASSWORD
+              key: POSTGRESQL_PASSWORD
         - name: DB_NAME
           valueFrom:
             configMapKeyRef:
               name: postgres-config
-              key: POSTGRES_DATABASE
+              key: POSTGRESQL_DATABASE
         - name: DB_PORT
           valueFrom:
             configMapKeyRef:
               name: postgres-config
-              key: POSTGRES_PORT
+              key: POSTGRESQL_PORT
         - name: REDIS_HOST
           valueFrom:
             configMapKeyRef:
