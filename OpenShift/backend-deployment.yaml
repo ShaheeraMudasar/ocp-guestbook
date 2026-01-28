@@ -19,18 +19,19 @@ spec:
         image: quay.io/shaheeramudasar/guestbook-backend:latest
         ports:
         - containerPort: 8080
+    envFrom:
+      - configMapRef:
+          name: backend-config
+      - secretRef:
+          name: postgres-password
     env:
-      - name: DB_HOST
-        value: "postgres" # Using postgres service name so that it can find that service
-      - name: DB_USER
-        value: "guestbook"
-      - name: DB_PASSWORD
-        value: "password"
-      - name: DB_NAME
-        value: "guestbook"
-      - name: REDIS_HOST
-        value: "redis"    # Matches the Service name above
-      - name: REDIS_PORT
-        value: "6379"
-      - name: REDIS_PASSWORD
-        value: ""         
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: backend-secret
+              key: DB_PASSWORD
+        - name: REDIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: backend-secret
+              key: REDIS_PASSWORD
