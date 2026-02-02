@@ -8,3 +8,5 @@ backend/guestbook-api
 # System files
 .DS_Store
 Thumbs.db
+
+temp_backups
