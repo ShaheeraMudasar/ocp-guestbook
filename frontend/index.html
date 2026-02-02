@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="sv">
-<head>
+<head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gästbok - OpenShift Lab</title>
@@ -262,7 +262,7 @@
                         <div class="entry-message">${escapeHtml(entry.message)}</div>
                     </div>
                 `).join('');
-                
+                // a comment for checking the pipeline
                 // Uppdatera cache-indikator
                 document.getElementById('cacheStatus').textContent = cacheStatus === 'HIT' ? '✓' : '○';
                 
